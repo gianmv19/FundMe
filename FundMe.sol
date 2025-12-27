@@ -8,7 +8,6 @@ pragma solidity ^0.8.18;
 
 import {PriceConverter} from "./PriceConverter.sol";
 
-
 error NotOwner();
 
 contract FundMe {
@@ -55,7 +54,7 @@ contract FundMe {
         //actually withdraw the funds
 
         //transfer 
-        //payable(msg.sender).transfer(address(this).balance); // transfer revets transaction if fails
+        //payable(msg.sender).transfer(address(this).balance); // transfer reverts transaction if fails
         //send
         //bool sendSuccess = payable(msg.sender).send(address(this).balance); // sends bools if was successful or not
         //require(sendSuccess, "Send Fai        led");
@@ -64,7 +63,6 @@ contract FundMe {
         (bool callSuccess, ) = payable(msg.sender).call{value: address(this).balance}(""); // send and transfer ethereum
         require(callSuccess, "Call Failed"); //code is the correct way
 
-        
     }
 
     modifier onlyOwner() {
